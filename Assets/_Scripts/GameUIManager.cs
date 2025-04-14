@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,30 +9,53 @@ public class GameUIManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     public void PauseButton()
     {
+        StartCoroutine(DelayedPause());
+    }
+
+    public void UnPauseButton()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(DelayedUnPause());
+    }
+
+    public void MenuButton()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(DelayedLoadScene("MenuScene"));
+    }
+
+    public void ReplayButton()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(DelayedLoadScene("GameScene"));
+    }
+
+    private IEnumerator DelayedPause()
+    {
+        yield return new WaitForSeconds(0.25f);
         _pause.SetActive(true);
         _pauseBtn.SetActive(false);
         Time.timeScale = 0;
     }
 
-    public void UnPauseButton()
+    private IEnumerator DelayedUnPause()
     {
+        yield return new WaitForSeconds(0.25f);
         _pause.SetActive(false);
         _pauseBtn.SetActive(true);
         Time.timeScale = 1;
     }
 
-    public void MenuButton()
+    private IEnumerator DelayedLoadScene(string sceneName)
     {
-        SceneManager.LoadScene("MenuScene");
-    }
-
-    public void ReplayButton()
-    {
-        SceneManager.LoadScene("GameScene");
+        yield return new WaitForSecondsRealtime(0.25f);
+        Time.timeScale = 1; // на случай, если из паузы
+        SceneManager.LoadScene(sceneName);
     }
 }

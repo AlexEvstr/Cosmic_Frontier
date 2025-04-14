@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +15,7 @@ public class PlayerNameManager : MonoBehaviour
     [SerializeField] private GameObject _board_2;
     [SerializeField] private GameObject _board_3;
     [SerializeField] private GameObject _board_4;
+
     private const string PlayerNameKey = "PlayerName";
 
     private void Start()
@@ -59,25 +61,28 @@ public class PlayerNameManager : MonoBehaviour
 
     public void OpenBoard_2()
     {
-        _board_1.SetActive(false);
-        _board_2.SetActive(true);
+        StartCoroutine(SwitchBoard(_board_1, _board_2));
     }
 
     public void OpenBoard_3()
     {
-        _board_2.SetActive(false);
-        _board_3.SetActive(true);
+        StartCoroutine(SwitchBoard(_board_2, _board_3));
     }
 
     public void OpenBoard_4()
     {
-        _board_3.SetActive(false);
-        _board_4.SetActive(true);
+        StartCoroutine(SwitchBoard(_board_3, _board_4));
     }
 
     public void OpenNameWindow()
     {
-        _board_4.SetActive(false);
-        inputPanel.SetActive(true);
+        StartCoroutine(SwitchBoard(_board_4, inputPanel));
+    }
+
+    private IEnumerator SwitchBoard(GameObject toDisable, GameObject toEnable)
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (toDisable != null) toDisable.SetActive(false);
+        if (toEnable != null) toEnable.SetActive(true);
     }
 }

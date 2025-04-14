@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,7 +19,6 @@ public class LevelChoose : MonoBehaviour
         levelButton = GetComponent<Button>();
         levelNumber = int.Parse(gameObject.name);
 
-
         int highestUnlockedLevel = PlayerPrefs.GetInt("bestLevel", 1);
         if (highestUnlockedLevel < levelNumber)
         {
@@ -33,7 +33,13 @@ public class LevelChoose : MonoBehaviour
 
     public void ChooseLevel()
     {
-        PlayerPrefs.SetInt("levelIndex", int.Parse(gameObject.name));
+        StartCoroutine(DelayedLoad());
+    }
+
+    private IEnumerator DelayedLoad()
+    {
+        PlayerPrefs.SetInt("levelIndex", levelNumber);
+        yield return new WaitForSecondsRealtime(0.25f);
         SceneManager.LoadScene("GameScene");
     }
 }

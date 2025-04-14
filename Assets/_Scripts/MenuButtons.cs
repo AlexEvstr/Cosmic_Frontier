@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class MenuButtons : MonoBehaviour
 {
@@ -20,61 +18,58 @@ public class MenuButtons : MonoBehaviour
 
     public void ClickPlayBtn()
     {
-        _menuWindow.SetActive(false);
-        _levelsWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_menuWindow, false, _levelsWindow, true));
     }
 
     public void ClickCloseLevelsWindow()
     {
-        _levelsWindow.SetActive(false);
-        _menuWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_levelsWindow, false, _menuWindow, true));
     }
 
     public void ClickSkinsBtn()
     {
-        _menuWindow.SetActive(false);
-        _skinsWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_menuWindow, false, _skinsWindow, true));
     }
 
     public void ClickCloseSkinsBtn()
     {
-        _skinsWindow.SetActive(false);
-        _menuWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_skinsWindow, false, _menuWindow, true));
     }
 
     public void ClickSettingsBtn()
     {
-        _menuWindow.SetActive(false);
-        _settingsWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_menuWindow, false, _settingsWindow, true));
     }
 
     public void ClickCloseSettingsBtn()
     {
-        _settingsWindow.SetActive(false);
-        _menuWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_settingsWindow, false, _menuWindow, true));
     }
 
     public void OpenPlanes()
     {
-        _backsSkinsWindow.SetActive(false);
-        _planesSkinsWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_backsSkinsWindow, false, _planesSkinsWindow, true));
     }
 
     public void OpenBacks()
     {
-        _planesSkinsWindow.SetActive(false);
-        _backsSkinsWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_planesSkinsWindow, false, _backsSkinsWindow, true));
     }
 
     public void OpenHowToPlay()
     {
-        _menuWindow.SetActive(false);
-        _howToPlayWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_menuWindow, false, _howToPlayWindow, true));
     }
 
     public void CloseHowToPlay()
     {
-        _howToPlayWindow.SetActive(false);
-        _menuWindow.SetActive(true);
+        StartCoroutine(SwitchWindows(_howToPlayWindow, false, _menuWindow, true));
+    }
+
+    private IEnumerator SwitchWindows(GameObject toDisable, bool disableState, GameObject toEnable, bool enableState)
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (toDisable != null) toDisable.SetActive(disableState);
+        if (toEnable != null) toEnable.SetActive(enableState);
     }
 }
