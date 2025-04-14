@@ -278,15 +278,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: loading
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e2baf4f6342284d70b77185a7c764b91, type: 2}
-  m_sharedMaterial: {fileID: -2232434165695733083, guid: e2baf4f6342284d70b77185a7c764b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 491f58af99d384ad091b1a6782af6c50, type: 2}
+  m_sharedMaterial: {fileID: -6439076435987930627, guid: 491f58af99d384ad091b1a6782af6c50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278211111
-  m_fontColor: {r: 0.15328833, g: 0.3207547, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -303,8 +303,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -543,8 +543,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278211111
-  m_fontColor: {r: 0.15328833, g: 0.3207547, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -677,8 +677,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278211111
-  m_fontColor: {r: 0.15328833, g: 0.3207547, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -867,8 +867,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278211111
-  m_fontColor: {r: 0.15328833, g: 0.3207547, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
