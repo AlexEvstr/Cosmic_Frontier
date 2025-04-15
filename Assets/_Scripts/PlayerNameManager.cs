@@ -24,7 +24,7 @@ public class PlayerNameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey(PlayerNameKey))
         {
-            _welcomeText.text = "welcome back, " + playerName + "!";
+            _welcomeText.text = "welcome back!";
             _menuWindow.SetActive(true);
             Screen.orientation = ScreenOrientation.LandscapeLeft;
         }
@@ -41,22 +41,19 @@ public class PlayerNameManager : MonoBehaviour
 
     private void OnSubmitButtonClicked()
     {
-        string playerName = nameInputField.text;
 
-        if (!string.IsNullOrEmpty(playerName))
-        {
-            PlayerPrefs.SetString(PlayerNameKey, playerName);
-            PlayerPrefs.Save();
-            inputPanel.SetActive(false);
-            _onBoardCanvas.SetActive(false);
-            _menuWindow.SetActive(true);
-            _welcomeText.text = "Hello, " + playerName + "!";
-            Screen.orientation = ScreenOrientation.LandscapeLeft;
-        }
-        else
-        {
-            _welcomeText.text = "Player name cannot be empty.";
-        }
+        StartCoroutine(ClickOkButton());
+    }
+
+    private IEnumerator ClickOkButton()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        inputPanel.SetActive(false);
+        _onBoardCanvas.SetActive(false);
+        _menuWindow.SetActive(true);
+        _welcomeText.text = "Hello!";
+        PlayerPrefs.SetString(PlayerNameKey, "hello");
     }
 
     public void OpenBoard_2()
@@ -76,7 +73,8 @@ public class PlayerNameManager : MonoBehaviour
 
     public void OpenNameWindow()
     {
-        StartCoroutine(SwitchBoard(_board_4, inputPanel));
+        //StartCoroutine(SwitchBoard(_board_4, inputPanel));
+        OnSubmitButtonClicked();
     }
 
     private IEnumerator SwitchBoard(GameObject toDisable, GameObject toEnable)
